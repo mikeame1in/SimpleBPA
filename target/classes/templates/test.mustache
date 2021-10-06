@@ -1,0 +1,33 @@
+<html>
+
+<body>
+<div>
+    <form action="orders/create" method="post">
+        <div>
+            <input type="text" name="orderNumber" placeholder="Номер квитанции" />
+            <input type="text" name="acceptanceDate" placeholder="Дата приемки" value="07/15/2022" />
+            <input type="text" name="acceptor" placeholder="Приемщик" value="Смирнова"/>
+        </div>
+
+        <div>Заказчик</div>
+        <div>
+            <input type="text" name="firstName" placeholder="Имя" />
+            <input type="text" name="lastName" placeholder="Фамилия" value="Иванов" />
+            <input type="text" name="middleName" placeholder="Отчество" value="Иванович" />
+            <input type="text" name="phone" placeholder="Телефон" value="88002000600"/>
+            <input type="text" name="email" placeholder="Электронная почта" value="petrov@mail.ru"/>
+        </div>
+
+        <div>Вещь</div>
+        <div>
+            <input type="text" name="name" placeholder="Наименование" />
+            <input type="text" name="manufacturer" placeholder="Производитель" value="PingPong" />
+            <input type="text" name="country" placeholder="Страна" value="Китай"/>
+            <input type="text" name="defects" placeholder="Дефекты" value="Царапина"/>
+            <input type="text" name="wearDegree" placeholder="Износ" value="50" />
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
