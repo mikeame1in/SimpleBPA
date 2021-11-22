@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.amelin.simplecrm.OrderServiceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.141 s <<< FAILURE! - in com.amelin.simplecrm.OrderServiceTest
+initializationError(com.amelin.simplecrm.OrderServiceTest)  Time elapsed: 0 s  <<< ERROR!
+org.junit.runners.model.InvalidTestClassError: 
+Invalid test class 'com.amelin.simplecrm.OrderServiceTest':
+  1. No runnable methods
+

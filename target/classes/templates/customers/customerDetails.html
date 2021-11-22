@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body})}">
+
+<body>
+
+
+
+
+<div class="container w-25 position-absolute top-50 start-50 translate-middle" th:fragment="customerDetails (customer)">
+  <h2>Customer Information</h2>
+  <table class="table table-striped" th:object="${customer}">
+    <tr>
+      <th>Name</th>
+      <td><b th:text="*{firstName + ' ' + lastName + ' ' + middleName}"></b></td>
+    </tr>
+    <tr>
+      <th>Email</th>
+      <td th:text="*{email}"></td>
+    </tr>
+    <tr>
+      <th>Phone</th>
+      <td th:text="*{phone}"></td>
+    </tr>
+  </table>
+
+  <a th:href="@{/customers/{id}/edit(id=${customer.id})}" class="btn btn-warning">Edit Customer</a>
+  <a th:href="@{/customers/{id}/tailorOrders/new(id=${customer.id})}" class="btn btn-primary">Add New Order</a>
+</div>
+
+
+
+
+<!--<br />-->
+<!--<br />-->
+<!--<br />-->
+<!--<h2>Orders</h2>-->
+
+<!--<table class="table table-striped">-->
+
+<!--  <tr th:each="tailorOrder : ${customer.orders}">-->
+<!--    <td valign="top">-->
+<!--      <dl class="dl-horizontal">-->
+<!--        <dt>Name</dt>-->
+<!--        <dd th:text="${tailorOrder.name}"></dd>-->
+<!--        <dt>Acceptance Date</dt>-->
+<!--        <dd-->
+<!--                th:text="${#temporals.format(tailorOrder.acceptanceDate, 'yyyy-MM-dd')}"></dd>-->
+<!--        <dt>Article Name</dt>-->
+<!--        <dd th:text="${tailorOrder.name}"></dd>-->
+<!--      </dl>-->
+<!--    </td>-->
+<!--  </tr>-->
+
+<!--</table>-->
+</body>
+
+</html>

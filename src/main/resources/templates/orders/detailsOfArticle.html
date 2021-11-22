@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<body>
+    <div class="container w-25 position-absolute top-50 start-50 translate-middle" th:fragment="articleDetails (name, manufacturer, country, defects)">
+
+        <h2>Article Information</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Name</th>
+                <td><b th:text="${name}"></b></td>
+            </tr>
+            <tr>
+                <th>Manufacturer</th>
+                <td th:text="${manufacturer}"></td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td th:text="${country}"></td>
+            </tr>
+            <tr>
+                <th>Defects</th>
+                <td th:text="${defects}"></td>
+            </tr>
+        </table>
+
+        <!--    <a th:href="@{/customers/{id}/edit(id=${customer.id})}" class="btn btn-warning">Edit Customer</a>-->
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<body>
+<form>
+    <th:block th:fragment="input (label, name, type)">
+        <div>
+<!--        <div th:with="valid=${!#fields.hasErrors(name)}"-->
+<!--             th:class="${'form-group' + (valid ? '' : ' has-error')}"-->
+<!--             class="form-group">-->
+
+            <div class="col-sm-10">
+                <div th:switch="${type}" class="form-floating mb-3">
+                    <input th:case="'text'" th:name="${name}" th:id="${name}" class="form-control" type="text" th:placeholder="${name}" />
+<!--                            -->
+
+                    <input th:case="'date'" class="form-control" type="text"
+                           placeholder="YYYY-MM-DD" title="Enter a date in this format: YYYY-MM-DD"
+                           pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])
+                           |(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"/>
+                    <label th:for="${name}" th:text="${label}">Label</label>
+                </div>
+<!--                <span th:if="${valid}"-->
+<!--                      class="glyphicon glyphicon-ok form-control-feedback"-->
+<!--                      aria-hidden="true"></span>-->
+<!--                <th:block th:if="${!valid}">-->
+<!--            <span-->
+<!--                    class="glyphicon glyphicon-remove form-control-feedback"-->
+<!--                    aria-hidden="true"></span>-->
+<!--                    <span class="help-inline" th:errors="*{__${name}__}">Error</span>-->
+<!--                </th:block>-->
+            </div>
+        </div>
+    </th:block>
+</form>
+</body>
+</html>

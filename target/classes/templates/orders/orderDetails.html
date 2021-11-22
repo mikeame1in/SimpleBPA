@@ -1,0 +1,76 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body})}">
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Order Information</h2>
+            <table class="table table-striped" th:object="${tailorOrder}">
+                <tr>
+                    <th>Number</th>
+                    <td><b th:text="*{id}"></b></td>
+                </tr>
+                <tr>
+                    <th>Acceptance Date</th>
+                    <td th:text="*{acceptanceDate}"></td>
+                </tr>
+            </table>
+            <a th:href="@{/customers/{customerId}/tailorOrders/{orderId}/edit (customerId=${tailorOrder.customer.id}, orderId = ${tailorOrder.id})}"
+                       class="btn btn-warning">Edit Order</a>
+        </div>
+        <div class="col">
+            <h2>Order Details</h2>
+            <p>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#customer" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Customer
+                </a>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#article" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Article
+                </a>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#jobs" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Jobs
+                </a>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Payments
+                </a>
+            </p>
+            <div class="collapse" id="customer">
+                <div class="card card-body">
+                    <div th:include="customers/customerDetails :: customerDetails(${tailorOrder.customer})"></div>
+                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+            <div class="collapse" id="article">
+                <div class="card card-body">
+                    <div th:include="orders/detailsOfArticle :: articleDetails (${tailorOrder.name}, ${tailorOrder.manufacturer}, ${tailorOrder.country}, ${tailorOrder.defects})"></div>
+                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+            <div class="collapse" id="jobs">
+                <div class="card card-body">
+                    <h2>Jobs Information</h2>
+                    <div class="data-job-js">
+
+                    </div>
+                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!--<a th:href="@{{id}/tailorOrders/new(id=${customer.id})}" class="btn btn-default">Add New Order</a>-->
+
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function (){
+            $("#fetchContacts").bind("click", function() {
+
+                $.get("http://localhost:8080/jobRest/jobs", function(data) {
+
+                    $.each(data, function(i, job) {
+
+                        $(".data-contacts-js").append(
+                            "<tr><td>" + job.id + "</td>" + "<input type='hidden' name='id' value='job.id'>" +
+                            "<td>" + job.ready + "</td>" + "<input type='hidden' name='ready' value='job.ready'>" +
+                            "<td>" + job.serviceName + "</td>" + "<input type='hidden' name='serviceName' value='job.serviceName'>" +
+                            "<td>" + job.note + "</td>" + "<input type='hidden' name='note' value='job.note'>" +
+                            "<td>" + job.price + "</td></tr>" + "<input type='hidden' name='price' value='job.price'>");
+                    });
+
+                });
+            });
+        })
+
+    </script>
+</head>
+<body>
+<h2>Contact Listing</h2>
+
+<form method="post" action="http://localhost/JobRest/save">
+    <table class="data-contacts-js table table-striped" >
+        <tr>
+            <th>Id</th>
+            <th>Ready</th>
+            <th>Name</th>
+            <th>Note</th>
+            <th>Price</th>
+            </th>
+        </tr>
+    </table>
+    <button type="submit">Отправить</button>
+</form>
+
+
+<button id="fetchContacts" class="btn btn-default" type="submit">Button</button>
+</body>
+</html>

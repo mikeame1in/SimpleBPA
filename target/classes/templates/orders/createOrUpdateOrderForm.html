@@ -1,0 +1,31 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body})}">
+<!---->
+<body>
+    <div class="container w-25 position-absolute top-50 start-50 translate-middle">
+        <h2><th:block th:if="${order['new']}">New</th:block> Order</h2>
+
+        <form th:object="${order}" th:action="@{/customers/{id}/tailorOrders/{text}
+        (id = ${customer.id}, text = ${order['new']} ? 'new' : ${order.id} + '/edit')}" class="form-horizontal" method="post" >
+            <input type="hidden" name="id" th:value="*{id}" />
+            <div class="form-group has-feedback">
+                <h2>Order Information</h2>
+
+                <input
+                        th:replace="~{fragments/inputField :: input ('Date', 'acceptanceDate', 'date')}"  />
+                <input
+                        th:replace="~{fragments/inputField :: input ('Article Name', 'name', 'text')}"  />
+                <input
+                        th:replace="~{fragments/inputField :: input ('Manufacturer', 'manufacturer', 'text')}"  />
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button
+                            th:with="text=${order['new']} ? 'Add Order' : 'Update Order'"
+                            class="btn btn-primary" type="submit" th:text="${text}">Add Order</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
